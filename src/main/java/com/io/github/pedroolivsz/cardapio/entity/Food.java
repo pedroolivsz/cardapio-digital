@@ -1,9 +1,8 @@
 package com.io.github.pedroolivsz.cardapio.entity;
 
+import com.io.github.pedroolivsz.cardapio.DTO.FoodRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "foods")
@@ -16,5 +15,11 @@ public class Food {
     private Long id;
     private String title;
     private String image;
-    private BigDecimal price;
+    private Integer price;
+
+    public Food(FoodRequestDTO foodRequestDTO) {
+        this.title = foodRequestDTO.title();
+        this.image = foodRequestDTO.image();
+        this.price = foodRequestDTO.price();
+    }
 }
